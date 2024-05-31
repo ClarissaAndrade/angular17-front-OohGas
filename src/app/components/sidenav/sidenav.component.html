@@ -6,8 +6,8 @@
 	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
 		<mat-nav-list>
 			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-				<span class="full-width" *ngIf="isExpanded || isShowing">Vendas</span>
 				<mat-icon mat-list-icon>shopping_cart</mat-icon>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Vendas</span>
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
 			</mat-list-item>
 			<div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
@@ -24,8 +24,8 @@
 				</div>
 			</div>
 			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-				<span class="full-width" *ngIf="isExpanded || isShowing">Configurações</span>
 				<mat-icon mat-list-icon>settings</mat-icon>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Configurações</span>
 				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
 			</mat-list-item>
 			<div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">

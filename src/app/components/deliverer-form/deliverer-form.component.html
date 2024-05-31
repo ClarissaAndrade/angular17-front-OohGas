@@ -1,0 +1,105 @@
+<div class="form">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        <div class="formGroup">
+            <mat-form-field appearance="fill" style="width:15vw">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option value="1">Ativo</mat-option>
+                    <mat-option value="0">Inativo</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="formGroup">
+            <div class="input">
+                <mat-form-field appearance="fill" style="width:42vw">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="name" required>
+                </mat-form-field>
+            </div>
+
+            <div class="input">
+                <mat-form-field appearance="fill" style="width:30vw">
+                    <mat-label>Apelido</mat-label>
+                    <input matInput formControlName="nickName" required>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="formGroup">
+
+            <div class="input">
+                <mat-form-field appearance="fill" style="width:17vw">
+                    <mat-label>Celular</mat-label>
+                    <input matInput type="number" formControlName="phone" required>
+                </mat-form-field>
+            </div>
+
+            <div class="input">
+                <mat-form-field style="width:18vw">
+                    <mat-label>Data de Nascimento</mat-label>
+                    <input matInput [matDatepicker]="dtNascimento">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="dtNascimento"></mat-datepicker-toggle>
+                    <mat-datepicker #dtNascimento></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="input">
+                <mat-form-field appearance="fill" style="width:17vw">
+                    <mat-label>CPF</mat-label>
+                    <input matInput formControlName="cpf" required>
+                </mat-form-field>
+            </div>
+
+            <div class="input">
+                <mat-form-field appearance="fill" style="width:17vw">
+                    <mat-label>RG</mat-label>
+                    <input matInput formControlName="rg" required>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="formGroup">
+
+            <div class="input">
+                <mat-form-field appearance="fill" style="width:20vw">
+                    <mat-label>CNH</mat-label>
+                    <input matInput formControlName="cnh" required>
+                </mat-form-field>
+            </div>
+
+            <div class="input">
+                <mat-form-field style="width:20vw">
+                    <mat-label>Categoria da CNH</mat-label>
+                    <mat-select>
+                        @for (category of cnhCategories; track category) {
+                        <mat-option [value]="category.value">{{category.viewValue}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="input">
+                <mat-form-field style="width:20vw">
+                    <mat-label>Validade da CNH</mat-label>
+                    <input matInput [matDatepicker]="dtCnhExpiry">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="dtCnhExpiry"></mat-datepicker-toggle>
+                    <mat-datepicker #dtCnhExpiry></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <div class="formButton">
+            <div class="buttons">
+                <button mat-raised-button type="button" >Cancelar</button>
+            </div>
+            <div class="buttons">
+                <button mat-raised-button type="submit" [disabled]="!myForm.valid">Salvar</button>
+            </div>
+        </div>
+    </form>
+</div>

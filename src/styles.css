@@ -32,3 +32,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .buttons {
     margin-left: 15px;
 }
+.row {
+    display: flex; /* Ativa o Flexbox */
+    flex-direction: row; /* Organiza os elementos em linhas (horizontalmente) */
+    gap: 16px; /* Espaçamento entre os elementos (opcional) */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    margin-bottom: 1em;
+}
+.title-div {
+    margin-bottom: 10vh !important;
+}
+.h1-title {
+    font-size: 3em !important;
+}
+.custom-no-spin::-webkit-inner-spin-button,
+.custom-no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-no-spin {
+  -moz-appearance: textfield; /* Remove as setas no Firefox */
+}

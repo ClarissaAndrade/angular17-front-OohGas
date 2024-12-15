@@ -9,6 +9,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DelivererService } from '../../core/services/deliverer.service';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 interface CnhCategories {
   value: string;
@@ -18,7 +21,7 @@ interface CnhCategories {
 @Component({
   selector: 'app-deliverer-form',
   standalone: true,
-  imports: [MatInputModule, MatButtonModule, MatSelectModule, MatRadioModule, MatCheckboxModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule, MatNativeDateModule],
+  imports: [MatInputModule, MatButtonModule, MatSelectModule, MatRadioModule, MatCheckboxModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule, MatNativeDateModule, CommonModule],
   providers: [],
   templateUrl: './deliverer-form.component.html',
   styleUrl: './deliverer-form.component.css'
@@ -37,7 +40,10 @@ export class DelivererFormComponent {
     {value: 'AE', viewValue: 'AE'}
   ];
 
-  constructor(private fb: FormBuilder) {
+  title: string = "Novo Entregador";
+  isUpdate: boolean = true;
+
+  constructor(private fb: FormBuilder, private delivererService: DelivererService, private router: Router) {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       nickName: ['', Validators.required],
@@ -53,11 +59,25 @@ export class DelivererFormComponent {
   }
 
   onSubmit() {
-    if (this.myForm.valid) {
+		console.log(this.myForm);
+    if (this.myForm.valid) {  
       console.log(this.myForm.value);
+      this.delivererService.create(this.myForm.value).subscribe((res:any) => {
+           console.log('Post created successfully!');
+           this.router.navigate(['/entregadores']);
+      })
     } else {
       console.log('Form is invalid');
     }
   }
+
+	onlyNumbers(event: KeyboardEvent): boolean {
+		const charCode = event.key.charCodeAt(0);
+		if (charCode < 48 || charCode > 57) {
+			event.preventDefault();
+			return false; // Bloqueia caracteres não numéricos
+		}
+		return true;
+	}
 
 }

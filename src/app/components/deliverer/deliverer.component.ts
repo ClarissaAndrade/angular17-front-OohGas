@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
   styleUrl: './deliverer.component.css'
 })
 export class DelivererComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'phone', 'cpf', 'status'];
+
+  displayedColumns: string[] = ['name', 'phone', 'cpf', 'status', 'actions'];
   deliverers: Deliverer[] = [];
   dataSource = [...this.deliverers];
 
@@ -34,4 +35,20 @@ export class DelivererComponent implements OnInit {
   goToTargetPage(): void {
     this.router.navigate(['/entregadores/adicionar']);
   }
+
+  delete(id: number) {
+    this.delivererService.delete(id)
+      .subscribe(response => {
+        this.delivererService.list()
+        .subscribe(dados => {
+          this.deliverers = dados;
+          this.dataSource = [...this.deliverers];
+          console.log(this.deliverers);
+        });
+      });
+  }
+
+    editarElemento(_t60: any) {
+    throw new Error('Method not implemented.');
+    }
 }

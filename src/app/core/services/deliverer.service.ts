@@ -40,6 +40,15 @@ export class DelivererService {
     )
   }
 
+  delete(id:number): Observable<any> {
+  
+    return this.httpClient.delete(`${this.apiUrl}/Deliverers/${id}`)
+  
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   private errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

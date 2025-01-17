@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DelivererService } from '../../core/services/deliverer.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -45,7 +46,7 @@ export class DelivererFormComponent {
   title: string = "Novo Entregador";
   isUpdate: boolean = true;
 
-  constructor(private fb: FormBuilder, private delivererService: DelivererService, private router: Router) {
+  constructor(private fb: FormBuilder, private delivererService: DelivererService, private router: Router, private toastr: ToastrService) {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       nickName: ['', Validators.required],
@@ -60,16 +61,36 @@ export class DelivererFormComponent {
     });
   }
 
+  // onSubmit() {
+	// 	console.log(this.myForm);
+  //   if (this.myForm.valid) {  
+  //     console.log(this.myForm.value);
+  //     this.delivererService.create(this.myForm.value).subscribe((res:any) => {
+  //          console.log('Post created successfully!');
+  //          this.router.navigate(['/entregadores']);
+  //     })
+  //   } else {
+  //     console.log('Form is invalid');
+  //   }
+  // }
+
   onSubmit() {
-		console.log(this.myForm);
-    if (this.myForm.valid) {  
-      console.log(this.myForm.value);
-      this.delivererService.create(this.myForm.value).subscribe((res:any) => {
-           console.log('Post created successfully!');
-           this.router.navigate(['/entregadores']);
-      })
+    console.log(this.myForm);
+  
+    if (this.myForm.valid) {
+      this.delivererService.create(this.myForm.value).subscribe({
+        next: (res: any) => {
+          this.toastr.success('Registro criado com sucesso!', '', {closeButton:true});
+          this.router.navigate(['/entregadores']);
+        },
+        error: (err) => {
+          console.error(err);
+          this.toastr.error('Erro ao criar o registro.', '', {closeButton:true});
+        },
+      });
     } else {
       console.log('Form is invalid');
+      this.toastr.error('Formulário inválido. Verifique os campos obrigatórios.', '', {closeButton:true});
     }
   }
 

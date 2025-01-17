@@ -6,51 +6,51 @@
   <mat-sidenav-container class="example-container" autosize>
 	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
 	  <mat-nav-list>
-		<mat-list-item (click)="isSubmenuVendasExpanded = !isSubmenuVendasExpanded" class="parent">
+		<!-- Menu Vendas -->
+		<mat-list-item (click)="toggleSubmenu('vendas')" class="parent">
 		  <mat-icon mat-list-icon>shopping_cart</mat-icon>
 		  <span class="full-width" *ngIf="isExpanded || isShowing">Vendas</span>
-		  <mat-icon class="menu-button" [ngClass]="{'rotated' : isSubmenuVendasExpanded}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+		  <mat-icon class="menu-button" [ngClass]="{'rotated' : submenuState['vendas']}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
 		</mat-list-item>
   
-		<div class="submenu" [ngClass]="{'expanded' : isSubmenuVendasExpanded}" *ngIf="isShowing || isExpanded">
+		<div class="submenu" [ngClass]="{'expanded' : submenuState['vendas']}" *ngIf="isShowing || isExpanded">
 		  <a mat-list-item routerLink="/clientes" routerLinkActive="router-link-active">Relatórios</a>
 		  <a mat-list-item href="...">Portaria</a>
 		  <a mat-list-item href="...">Clientes</a>
   
-		  <mat-list-item (click)="isSubSubMenuVendasExpanded = !isSubSubMenuVendasExpanded" class="parent">
+		  <mat-list-item (click)="toggleSubSubMenu('vendas')" class="parent">
 			<span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
-			<mat-icon class="menu-button" [ngClass]="{'rotated' : isSubSubMenuVendasExpanded}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+			<mat-icon class="menu-button" [ngClass]="{'rotated' : submenuStateNested['vendas']}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
 		  </mat-list-item>
   
-		  <div class="submenu" [ngClass]="{'expanded' : isSubSubMenuVendasExpanded}" *ngIf="isShowing || isExpanded">
+		  <div class="submenu" [ngClass]="{'expanded' : submenuStateNested['vendas']}" *ngIf="isShowing || isExpanded">
 			<mat-list-item>SubSubmenu Item 1</mat-list-item>
 			<mat-list-item>SubSubmenu Item 2</mat-list-item>
 		  </div>
 		</div>
   
-		<!-- Menu de Configurações -->
-		<mat-list-item (click)="isSubmenuConfigExpanded = !isSubmenuConfigExpanded" class="parent">
+		<!-- Menu Configurações -->
+		<mat-list-item (click)="toggleSubmenu('configuracoes')" class="parent">
 		  <mat-icon mat-list-icon>settings</mat-icon>
 		  <span class="full-width" *ngIf="isExpanded || isShowing">Configurações</span>
-		  <mat-icon class="menu-button" [ngClass]="{'rotated' : isSubmenuConfigExpanded}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+		  <mat-icon class="menu-button" [ngClass]="{'rotated' : submenuState['configuracoes']}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
 		</mat-list-item>
   
-		<div class="submenu" [ngClass]="{'expanded' : isSubmenuConfigExpanded}" *ngIf="isShowing || isExpanded">
+		<div class="submenu" [ngClass]="{'expanded' : submenuState['configuracoes']}" *ngIf="isShowing || isExpanded">
 		  <a mat-list-item routerLink="/entregadores" routerLinkActive="router-link-active">Entregadores</a>
 		  <a mat-list-item href="...">Portaria</a>
 		  <a mat-list-item href="...">Clientes</a>
   
-		  <mat-list-item (click)="isSubSubMenuConfigExpanded = !isSubSubMenuConfigExpanded" class="parent">
+		  <mat-list-item (click)="toggleSubSubMenu('configuracoes')" class="parent">
 			<span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
-			<mat-icon class="menu-button" [ngClass]="{'rotated' : isSubSubMenuConfigExpanded}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+			<mat-icon class="menu-button" [ngClass]="{'rotated' : submenuStateNested['configuracoes']}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
 		  </mat-list-item>
   
-		  <div class="submenu" [ngClass]="{'expanded' : isSubSubMenuConfigExpanded}" *ngIf="isShowing || isExpanded">
+		  <div class="submenu" [ngClass]="{'expanded' : submenuStateNested['configuracoes']}" *ngIf="isShowing || isExpanded">
 			<mat-list-item>SubSubmenu Item 1</mat-list-item>
 			<mat-list-item>SubSubmenu Item 2</mat-list-item>
 		  </div>
 		</div>
-  
 	  </mat-nav-list>
 	</mat-sidenav>
   

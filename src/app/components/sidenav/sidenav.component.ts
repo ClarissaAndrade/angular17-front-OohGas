@@ -18,12 +18,29 @@ export class SidenavComponent {
   @ViewChild('sidenav')
   sidenav!: MatSidenav;
   isExpanded = true;
-  isSubmenuVendasExpanded: boolean = false;
-  isSubmenuConfigExpanded: boolean = false;
-  isSubSubMenuVendasExpanded: boolean = false;
-  isSubSubMenuConfigExpanded: boolean = false;
+  
   isShowing = false;
   showSubSubMenu: boolean = false;
+
+  submenuState: { [key: string]: boolean } = {
+    vendas: false,
+    configuracoes: false
+  };
+
+  // Alterna o estado de expansão para o submenu específico
+  toggleSubmenu(menu: string) {
+    this.submenuState[menu] = !this.submenuState[menu];
+  }
+
+  // Para alternar os submenus internos de cada menu
+  submenuStateNested: { [key: string]: boolean } = {
+    vendas: false,
+    configuracoes: false
+  };
+
+  toggleSubSubMenu(menu: string) {
+    this.submenuStateNested[menu] = !this.submenuStateNested[menu];
+  }
 
   mouseenter() {
     if (!this.isExpanded) {

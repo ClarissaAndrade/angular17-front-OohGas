@@ -31,22 +31,34 @@ export class DelivererService {
     );
   }
 
+  get(id: number): Observable<Deliverer> {
+    return this.httpClient.get<Deliverer>(`${this.apiUrl}/Deliverers/${id}`, this.httpOptions)
+      .pipe(
+        tap(deliverer => console.log(`Buscou o entregador com id=${id}`)),
+        catchError(this.handleError<Deliverer>(`getDeliverer id=${id}`))
+      );
+  }
+
   create(deliverer:Deliverer): Observable<any> {
-  
     return this.httpClient.post(`${this.apiUrl}/Deliverers`, JSON.stringify(deliverer), this.httpOptions)
-  
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
   delete(id:number): Observable<any> {
-  
     return this.httpClient.delete(`${this.apiUrl}/Deliverers/${id}`)
-  
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  update(id: number, deliverer: Deliverer): Observable<any> {
+    return this.httpClient.put(`${this.apiUrl}/Deliverers/${id}`, JSON.stringify(deliverer), httpOptions)
+      .pipe(
+        tap(() => console.log(`Atualizou o entregador com id=${id}`)),
+        catchError(this.errorHandler)
+      );
   }
 
   private errorHandler(error:any) {

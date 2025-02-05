@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { Deliverer } from '../../core/types/deliverer';
-import { DelivererService } from '../../core/services/deliverer.service';
+import { Deliverer } from '../../../core/types/deliverer';
+import { DelivererService } from '../../../core/services/deliverer.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
@@ -83,7 +83,7 @@ export class DelivererComponent implements OnInit {
   //     });
   // }
 
-    editarElemento(_t60: any) {
-    throw new Error('Method not implemented.');
-    }
+  editar(id: number) {
+    this.router.navigate(['entregadores/editar', id]);
+  }
 }

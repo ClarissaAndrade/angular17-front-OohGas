@@ -17,7 +17,7 @@ import { tap } from 'rxjs';
 })
 export class DelivererComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'phone', 'cpf', 'status', 'actions'];
+  displayedColumns: string[] = ['name', 'nickName', 'phone', 'cpf', 'status', 'actions'];
   deliverers: Deliverer[] = [];
   dataSource = [...this.deliverers];
 

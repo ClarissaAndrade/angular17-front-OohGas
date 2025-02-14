@@ -38,18 +38,7 @@
   
 		<div class="submenu" [ngClass]="{'expanded' : submenuState['configuracoes']}" *ngIf="isShowing || isExpanded">
 		  <a mat-list-item routerLink="/entregadores" routerLinkActive="router-link-active">Entregadores</a>
-		  <a mat-list-item href="...">Portaria</a>
-		  <a mat-list-item href="...">Clientes</a>
-  
-		  <mat-list-item (click)="toggleSubSubMenu('configuracoes')" class="parent">
-			<span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
-			<mat-icon class="menu-button" [ngClass]="{'rotated' : submenuStateNested['configuracoes']}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
-		  </mat-list-item>
-  
-		  <div class="submenu" [ngClass]="{'expanded' : submenuStateNested['configuracoes']}" *ngIf="isShowing || isExpanded">
-			<mat-list-item>SubSubmenu Item 1</mat-list-item>
-			<mat-list-item>SubSubmenu Item 2</mat-list-item>
-		  </div>
+		  <a mat-list-item routerLink="/categorias" routerLinkActive="router-link-active">Categorias</a>
 		</div>
 	  </mat-nav-list>
 	</mat-sidenav>

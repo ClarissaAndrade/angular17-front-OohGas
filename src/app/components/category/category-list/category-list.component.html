@@ -1,1 +1,35 @@
-<p>category-list works!</p>
+<h1>Categorias</h1>
+<button mat-fab class="fab-button" aria-label="Add" (click)="goToTargetPage()">
+    <mat-icon>add</mat-icon>
+</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="parentCategory">
+        <th mat-header-cell *matHeaderCellDef>Categoria Pai</th>
+        <td mat-cell *matCellDef="let element">{{element.parentCategory?.name || '-'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let element">
+            <!-- Botão Editar -->
+            <button mat-icon-button color="primary" (click)="editar(element.id)">
+                <mat-icon>edit</mat-icon>
+            </button>
+
+            <!-- Botão Excluir -->
+            <button mat-icon-button color="warn" (click)="delete(element.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

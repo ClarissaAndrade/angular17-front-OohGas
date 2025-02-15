@@ -1,0 +1,35 @@
+<div class="row title-div">
+    <h1 class="h1-title">{{title}}</h1>
+</div>
+<div class="form">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="formGroup">
+            <div class="input">
+                <mat-form-field appearance="fill" style="width:30vw">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="name" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="formGroup">
+            <div class="input">
+                <mat-form-field style="width:30vw">
+                    <mat-label>Categoria Pai</mat-label>
+                    <mat-select formControlName="idFather">
+                        @for (category of dataSource; track category) {
+                        <mat-option [value]="category.id">{{category.name}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="formButton">
+            <div class="buttons">
+                <button mat-raised-button type="button" [routerLink]="'/categorias'" >Cancelar</button>
+            </div>
+            <div class="buttons">
+                <button mat-raised-button type="submit">Salvar</button>
+            </div>
+        </div>
+    </form>
+</div>

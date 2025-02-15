@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError, of, tap, throwError } from 'rxjs';
 import { Category } from '../types/category';
+import { CategoryDTO } from '../types/category.dto';
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -39,7 +40,7 @@ export class CategoryService {
 	}
 
 	// Criar um novo entregador
-	create(category: Category): Observable<any> {
+	create(category: CategoryDTO): Observable<any> {
 		return this.httpClient.post(`${this.apiUrl}/Categories`, JSON.stringify(category), httpOptions)
 			.pipe(
 				catchError(this.handleError('create', null))

@@ -21,7 +21,6 @@ export class CategoryService {
 		private httpClient: HttpClient
 	) { }
 
-	// Listar todos os entregadores
 	list(): Observable<Category[]> {
 		return this.httpClient.get<Category[]>(`${this.apiUrl}/Categories`, httpOptions)
 			.pipe(
@@ -30,7 +29,6 @@ export class CategoryService {
 			);
 	}
 
-	// Obter um entregador por ID
 	get(id: number): Observable<Category> {
 		return this.httpClient.get<Category>(`${this.apiUrl}/Categories/${id}`, httpOptions)
 			.pipe(
@@ -39,7 +37,6 @@ export class CategoryService {
 			);
 	}
 
-	// Criar um novo entregador
 	create(category: CategoryDTO): Observable<any> {
 		return this.httpClient.post(`${this.apiUrl}/Categories`, JSON.stringify(category), httpOptions)
 			.pipe(
@@ -47,7 +44,6 @@ export class CategoryService {
 			);
 	}
 
-	// Deletar um entregador por ID
 	delete(id: number): Observable<any> {
 		return this.httpClient.delete(`${this.apiUrl}/Categories/${id}`, httpOptions)
 			.pipe(
@@ -55,7 +51,6 @@ export class CategoryService {
 			);
 	}
 
-	// Atualizar um entregador por ID
 	update(id: number, category: Category): Observable<any> {
 		return this.httpClient.put(`${this.apiUrl}/Categories/${id}`, JSON.stringify(category), httpOptions)
 			.pipe(
@@ -64,12 +59,10 @@ export class CategoryService {
 			);
 	}
 
-	// Tratar os erros genericos
 	private handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 			console.error(`${operation} failed: ${error.message}`);
 
-			// Adicione lógica de erro para diferentes códigos de status
 			let errorMessage = '';
 			if (error.status === 400) {
 				errorMessage = `Erro de requisição: ${error.message}`;
@@ -81,7 +74,6 @@ export class CategoryService {
 				errorMessage = `Código de erro: ${error.status} - ${error.message}`;
 			}
 
-			// Retorna a mensagem de erro para o componente
 			return throwError(() => new Error(errorMessage));
 		};
 	}

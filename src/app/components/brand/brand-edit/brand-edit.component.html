@@ -1,1 +1,62 @@
-<p>brand-edit works!</p>
+<div class="row title-div">
+  <h1 class="h1-title">{{ title }}</h1>
+</div>
+
+<div class="form">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div [ngStyle]="{ display: 'none' }" class="formGroup">
+      <mat-form-field appearance="fill">
+        <input matInput formControlName="id" />
+      </mat-form-field>
+    </div>
+    <div class="formGroup">
+      <mat-form-field class="responsive-input">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nickName" required />
+      </mat-form-field>
+
+      <mat-form-field class="responsive-input wide">
+        <mat-label>Razão Social</mat-label>
+        <input matInput formControlName="legalName" required />
+      </mat-form-field>
+    </div>
+
+    <div class="formGroup">
+      <mat-form-field class="responsive-input">
+        <mat-label>CNPJ</mat-label>
+        <input matInput formControlName="cnpj" required />
+      </mat-form-field>
+
+      <mat-form-field class="responsive-input">
+        <mat-label>Cidade</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="city"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let city of filteredCities" [value]="city">
+            {{ city }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="responsive-input">
+        <mat-label>Distância</mat-label>
+        <input matInput type="number" formControlName="distance" required />
+      </mat-form-field>
+    </div>
+
+    <div class="formButton">
+      <div class="buttons">
+        <button mat-raised-button type="button" [routerLink]="'/categorias'">
+          Cancelar
+        </button>
+      </div>
+      <div class="buttons">
+        <button mat-raised-button type="submit">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>

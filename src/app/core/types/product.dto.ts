@@ -1,7 +1,4 @@
-import { Brand } from "./brand";
-import { Category } from "./category";
-
-export interface Product {
+export interface ProductDTO {
     id: number;
     name?: string;
     price: number;
@@ -9,8 +6,6 @@ export interface Product {
     caskPrice?: number;
     deliveryFee?: number;
     categoryId: number;
-    category: Category;
     brandId: number;
-    brand: Brand;
     status: string;
 }

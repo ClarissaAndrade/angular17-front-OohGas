@@ -8,6 +8,9 @@ import { CategoryEditComponent } from './components/category/category-edit/categ
 import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
 import { BrandFormComponent } from './components/brand/brand-form/brand-form.component';
 import { BrandEditComponent } from './components/brand/brand-edit/brand-edit.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { ProductFormComponent } from './components/product/product-form/product-form.component';
+import { ProductEditComponent } from './components/product/product-edit/product-edit.component';
 
 export const routes: Routes = [
     {path: 'entregadores', component: DelivererComponent },
@@ -18,5 +21,8 @@ export const routes: Routes = [
     {path: 'categorias/editar/:id', component: CategoryEditComponent },
     {path: 'marcas', component: BrandListComponent },
     {path: 'marcas/adicionar', component: BrandFormComponent },
-    {path: 'marcas/editar/:id', component: BrandEditComponent }
+    {path: 'marcas/editar/:id', component: BrandEditComponent },
+    {path: 'produtos', component: ProductListComponent },
+    {path: 'produtos/adicionar', component: ProductFormComponent },
+    {path: 'produtos/editar/:id', component: ProductEditComponent }
 ];

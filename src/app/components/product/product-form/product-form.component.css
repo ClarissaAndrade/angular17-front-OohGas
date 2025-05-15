@@ -1,0 +1,39 @@
+.formGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.responsive-input {
+  flex: 1 1 200px; /* Cresce, encolhe, largura mínima */
+  min-width: 200px;
+  max-width: 100%;
+}
+
+.responsive-input.wide {
+  flex: 2 1 400px;
+}
+
+.responsive-input.full {
+  flex: 1 1 100%;
+}
+
+.formButton {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.buttons {
+  display: inline-block;
+}
+
+mat-radio-button {
+  margin-right: 16px;
+}
+
+button {
+  margin-top: 16px;
+}

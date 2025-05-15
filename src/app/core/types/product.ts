@@ -5,7 +5,6 @@ export interface Product {
     id: number;
     name?: string;
     price: number;
-    cost: number;
     caskPrice?: number;
     deliveryFee?: number;
     categoryId: number;
